@@ -3,23 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
-{
-    [SerializeField] private int _sizeInventory;
+{    
     [SerializeField] private bool groundedPlayer;
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float _sensitivity = 150f;
+    [SerializeField] private GameObject _inventory;
     private CharacterController controller;
     private Vector3 playerVelocity;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     private float _yRotaye;
-    private IInventory _inventory;
-    public IInventory Inventory 
-        => _inventory;
-    private void Awake()
-    {
-        _inventory = new Inventory(_sizeInventory);
-    }
+   
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -36,9 +30,7 @@ public class Controller : MonoBehaviour
 
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         move = transform.TransformDirection(move);
-        controller.Move(move * Time.deltaTime * playerSpeed);
-
-       
+        controller.Move(move * Time.deltaTime * playerSpeed);     
 
 
         if (Input.GetButtonDown("Jump") && groundedPlayer)
@@ -49,6 +41,8 @@ public class Controller : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
         MouseLook();
+        OpenInventory();
+
 
     }
     void MouseLook()
@@ -57,5 +51,13 @@ public class Controller : MonoBehaviour
         transform.Rotate(0, _yRotaye * _sensitivity * Time.deltaTime, 0);
     }
 
+    public void OpenInventory()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+          _inventory.SetActive(true);          
+            
+        }
+    }
     
 }

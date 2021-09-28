@@ -59,7 +59,7 @@ public class Inventory : IInventory
                     count = (_items[i].Count + item.Count) - item.MaxCount;
                     _items[i].Count = item.MaxCount;
                     item.Count = count;
-                    OnStateChanged?.Invoke(); //
+                    OnStateChanged?.Invoke();
                     return _AddItem(item);
                 }
 
@@ -73,7 +73,7 @@ public class Inventory : IInventory
         {
             if(_items[i] == item)
             {
-                _items[i] = null;
+                _items[i].Count -= 1;
                 OnStateChanged?.Invoke();
                 return true;
             }

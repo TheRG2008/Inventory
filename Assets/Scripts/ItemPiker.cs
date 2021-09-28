@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class ItemPiker : MonoBehaviour
 {
+    [SerializeField] private CreateInventory _createInventory;
     private IInventory _inventory;
     private void Start()
     {
-        _inventory = GetComponent<Controller>().Inventory;
+        _inventory = _createInventory.Inventory;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -16,12 +17,10 @@ public class ItemPiker : MonoBehaviour
 
         if (other.gameObject.GetComponent<Item>())
         {
-            Item item = new Item();
-            Item OldItem = other.GetComponent<Item>();
-            item.ItemType = OldItem.ItemType;
-            _inventory.AddItem(other.GetComponent<Item>());
-            //other.gameObject.SetActive(false);
-            Destroy(other.gameObject);
+            Item item = other.GetComponent<Item>(); 
+            _inventory.AddItem(item);
+            other.gameObject.SetActive(false);
+            //Destroy(other.gameObject);
         }
     }
 

@@ -112,7 +112,6 @@ GameObject:
   - component: {fileID: 8205423986145594718}
   - component: {fileID: 4832340033951480766}
   - component: {fileID: 4752026634114423314}
-  - component: {fileID: 1977864167}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -228,7 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d17457fca4e2214db904f0c389fff1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sizeInventory: 35
   groundedPlayer: 0
   playerSpeed: 2
   _sensitivity: 150
@@ -244,51 +242,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719280efd5368fa4ebff5f0946a1fb58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1977864167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6093200950344871850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8df43c90c50845d449a7fd8e66b7f79f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _createInventory: {fileID: 0}

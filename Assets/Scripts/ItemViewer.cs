@@ -6,24 +6,20 @@ using UnityEngine.UI;
 public class ItemViewer : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _slots;
-    //[SerializeField] private Transform _panel;
-    [SerializeField] private GameObject _slot;
-    //private List<GameObject> slots;
+    [SerializeField] private CountOfSell _countOfSale;    
     private Inventory _inventory;
+    public int Index;
+    public int CountItemForSell;
     
 
     private void Awake()
     {
-        //slots = new List<GameObject>();
         AddSlotID();
     }
     private void Start()
     {
-        
-        _inventory = (Inventory)GetComponent<Controller>().Inventory;
+        _inventory = (Inventory)GetComponent<CreateInventory>().Inventory;
         _inventory.OnStateChanged += UpdateInventory;
-       
-        //CreateInventorySlots();
     }
 
     private void UpdateInventory()
@@ -39,16 +35,21 @@ public class ItemViewer : MonoBehaviour
                 slot.Count = item.Count;
                 slot.Sprite = item.Img;                
             }
-            
         }
     }   
-    
-    public void SellItem ()
+
+    public void SellItem()
     {
-        
-
+        CountItemForSell = _countOfSale.CountOfSale;
+        for (int i = 0; i < CountItemForSell; i++)
+        {
+            Item item = _inventory.GetItem<Item>(Index);
+            _inventory.RemoveItem(item);
+        }
+        _countOfSale.CountOfSale = 1;
+        _countOfSale.CountUpdate();
     }
-
+    
     private void AddSlotID()
     {
         int counter = 0;
@@ -59,12 +60,5 @@ public class ItemViewer : MonoBehaviour
         }
     }
 
-    //void CreateInventorySlots ()
-    //{
-    //    for (int i = 0; i < 35; i++)
-    //    {
-    //        Instantiate(_slot, _panel);
-    //        slots.Add(_slot);
-    //    }
-    //}
+  
 }

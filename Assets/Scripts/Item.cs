@@ -21,16 +21,5 @@ public class Item : MonoBehaviour, IItem
     public int ID { get => _id; set => _id = value; }
     public object MetaData { get => _metaData; set => _metaData = value; }
 
-    //public static bool operator == (Item item1, Item item2)
-    //{
-    //    if (item1 is null || item2 is null)
-    //        return false;
-    //    return item1._name == item2._name;
-    //}
-    //public static bool operator != (Item item1, Item item2)
-    //{
-    //    if (item1 is null || item2 is null)
-    //        return false;
-    //    return item1._name != item2._name;
-    //}
+    
 }
