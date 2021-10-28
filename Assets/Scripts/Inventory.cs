@@ -42,27 +42,17 @@ public class Inventory : IInventory
 
     public bool AddItem(IItem item)
     {
-        int count = 0;
-
         for (int i = 0; i < _items.Length; i++)
         {
             if (_items[i] != null && _items[i].Name == item.Name)
             {
-                if (_items[i].Count <= item.MaxCount - item.Count)
+                _items[i].Count += item.Count;
+                if(_items[i].Count > item.MaxCount)
                 {
-                    _items[i].Count += item.Count;
-                    OnStateChanged?.Invoke();
-                    return true;
-                }
-                else
-                {
-                    count = (_items[i].Count + item.Count) - item.MaxCount;
                     _items[i].Count = item.MaxCount;
-                    item.Count = count;
-                    OnStateChanged?.Invoke();
-                    return _AddItem(item);
                 }
 
+                return true;
             }
         }
         return _AddItem(item);
@@ -73,7 +63,7 @@ public class Inventory : IInventory
         {
             if(_items[i] == item)
             {
-                _items[i].Count -= 1;
+                _items[i].Count -= item.Count;
                 OnStateChanged?.Invoke();
                 return true;
             }

@@ -248,7 +248,7 @@ MonoBehaviour:
   _sprite: {fileID: 6329331729121201985}
   _text: {fileID: 6710255706544063079}
   _selectButton: {fileID: 7399237981761006464}
-  _sellButton: {fileID: 0}
+  Index: 0
 --- !u!114 &7399237981761006464
 MonoBehaviour:
   m_ObjectHideFlags: 0

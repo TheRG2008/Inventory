@@ -16,7 +16,7 @@ public class ItemPiker : MonoBehaviour
     {
 
         if (other.gameObject.GetComponent<Item>())
-        {
+        {            
             Item item = other.GetComponent<Item>(); 
             _inventory.AddItem(item);
             other.gameObject.SetActive(false);
